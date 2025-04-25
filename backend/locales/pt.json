@@ -1,0 +1,14 @@
+{
+	"Success": "Sucesso",
+	"UserId is required": "UserId É Obrigatório",
+	"User Found": "Usuário Encontrado",
+	"User Not Found": "Usuário Não Encontrado",
+	"Users Found": "Users Found",
+	"Recipes Found": "Recipes Found",
+	"User Created": "User Created",
+	"User Updated": "User Updated",
+	"User id not found": "User id not found",
+	"Recipe Created": "Recipe Created",
+	"Recipe Updated": "Recipe Updated",
+	"Recipe Deleted": "Recipe Deleted"
+}
