@@ -1,6 +1,7 @@
-CREATE DATABASE IF NOT EXISTS app_db
-  DEFAULT CHARACTER SET utf8mb4
-  DEFAULT COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS app_db;
+GRANT ALL PRIVILEGES ON app_db.* TO 'root'@'localhost';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'app_psw';
+FLUSH PRIVILEGES;
 
 USE app_db;
 
