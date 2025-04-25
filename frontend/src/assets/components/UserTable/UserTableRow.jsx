@@ -1,5 +1,5 @@
 import StatusBadge from './StatusBadge'
-import ActionButtons from './ActionButtons'
+import ActionButtons from '../ActionButtons'
 
 export default function UserTableRow({ onClick, user, onEdit, onDelete }) {
     return (
@@ -16,7 +16,7 @@ export default function UserTableRow({ onClick, user, onEdit, onDelete }) {
                 <ActionButtons
                     onEdit={onEdit}
                     onDelete={onDelete}
-                    user={user}
+                    data={user}
                 />
             </td>
         </tr>

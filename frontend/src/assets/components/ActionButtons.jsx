@@ -1,12 +1,12 @@
-export default function ActionButtons({ recipe, onEdit, onDelete }) {
+export default function ActionButtons({ data, onEdit, onDelete }) {
     const handleClick = (e) => {
-        e.preventDefault();
-        onEdit(recipe);
+        e.stopPropagation();
+        onEdit(data);
     }
 
     const handleDelete = (e) => {
-        e.preventDefault();
-        onDelete(recipe.id);
+        e.stopPropagation();
+        onDelete(data.id);
     }
 
     return (

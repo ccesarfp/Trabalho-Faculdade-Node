@@ -11,5 +11,7 @@
 	"Recipe Created": "Recipe Created",
 	"Recipe Updated": "Recipe Updated",
 	"Recipe Deleted": "Recipe Deleted",
-	"Users Not Found": "Users Not Found"
+	"Users Not Found": "Users Not Found",
+	"User Deleted": "User Deleted",
+	"Recipes Not Found": "Recipes Not Found"
 }

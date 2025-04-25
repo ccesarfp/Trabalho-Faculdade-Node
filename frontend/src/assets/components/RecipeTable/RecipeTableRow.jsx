@@ -1,4 +1,4 @@
-import ActionButtons from './ActionButtons'
+import ActionButtons from "../ActionButtons"
 
 export default function RecipeTableRow({ recipe, onEdit, onDelete, onRowClick }) {
     return (
@@ -10,7 +10,7 @@ export default function RecipeTableRow({ recipe, onEdit, onDelete, onRowClick })
             <td className="px-6 py-4">{recipe.complexity}</td>
             <td className="px-6 py-4">
                 <ActionButtons
-                    recipe={recipe}
+                    data={recipe}
                     onEdit={onEdit}
                     onDelete={onDelete}
                 />
