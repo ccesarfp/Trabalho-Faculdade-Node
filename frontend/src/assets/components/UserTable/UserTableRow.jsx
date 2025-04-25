@@ -9,7 +9,6 @@ export default function UserTableRow({ onClick, user, onEdit, onDelete }) {
         >
             <td className="px-6 py-4">{user.name}</td>
             <td className="px-6 py-4">{user.email}</td>
-            <td className="px-6 py-4">{user.recipesCount}</td>
             <td className="px-6 py-4">
                 <StatusBadge status={user.status}/>
             </td>
