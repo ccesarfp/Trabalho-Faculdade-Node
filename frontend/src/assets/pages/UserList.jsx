@@ -4,16 +4,28 @@ import {useNavigate} from "react-router-dom";
 import UserModal from "../components/UserModal.jsx";
 import {useEffect, useState} from "react";
 import api from "../../api/axios.js";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function UserList() {
+    const successIcon = "✅";
+    const errorIcon = "❌";
+    const styleToast = {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      };
+
     const [users, setUsers] = useState();
     useEffect(() => {
         api.get("api/users")
             .then(r => {
                 setUsers(r.data.users);
+                toast(r.data.message, {...styleToast, icon: successIcon});
             })
             .catch(err => {
-                console.error("Erro ao buscar usuários:", err);
+                toast("Problem during load", {...styleToast, icon: errorIcon});
             });
     }, []);
 
@@ -35,18 +47,20 @@ export default function UserList() {
         if (editingUser) {
             api.put("api/users", data)
                 .then(r => {
+                    toast(r.data.message, {...styleToast, icon: successIcon});
                     navigate(0);
                 })
                 .catch(err => {
-                    console.error("Erro ao buscar usuários:", err);
+                    toast("Problem during update", {...styleToast, icon: errorIcon});
                 });
         } else {
             api.post("api/users", data)
                 .then(r => {
+                    toast(r.data.message, {...styleToast, icon: successIcon});
                     navigate(0);
                 })
                 .catch(err => {
-                    console.error("Erro ao buscar usuários:", err);
+                    toast("Problem during creation", {...styleToast, icon: errorIcon});
                 });
         }
     };
@@ -54,10 +68,11 @@ export default function UserList() {
     const deleteUser = (id) => {
         api.delete(`api/users/${id}`)
             .then(r => {
+                toast(r.data.message, {...styleToast, icon: successIcon});
                 navigate(0);
             })
             .catch(err => {
-                console.error("Erro ao deletar usuário:", err);
+                toast("Problem during delete", {...styleToast, icon: errorIcon});
             });
     }
 
@@ -97,6 +112,11 @@ export default function UserList() {
                     />
                 </div>
             </div>
+
+            <Toaster 
+                position="bottom-right"
+                reverseOrder={false}
+            />
         </>
     )
 }

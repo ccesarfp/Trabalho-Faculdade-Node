@@ -3,12 +3,13 @@
 	"UserId is required": "UserId É Obrigatório",
 	"User Found": "Usuário Encontrado",
 	"User Not Found": "Usuário Não Encontrado",
-	"Users Found": "Users Found",
-	"Recipes Found": "Recipes Found",
-	"User Created": "User Created",
-	"User Updated": "User Updated",
-	"User id not found": "User id not found",
-	"Recipe Created": "Recipe Created",
-	"Recipe Updated": "Recipe Updated",
-	"Recipe Deleted": "Recipe Deleted"
+	"Users Found": "Usuários Encontrados",
+	"Recipes Found": "Receitas Encontrados",
+	"User Created": "Usuário Criado",
+	"User Updated": "Usuário Atualizado",
+	"User id not found": "Id do Usuário Não foi Encontrado",
+	"Recipe Created": "Receita Criada",
+	"Recipe Updated": "Receita Atualizada",
+	"Recipe Deleted": "Receita Deletada",
+	"Users Not Found": "Usuários Não Encontrados"
 }

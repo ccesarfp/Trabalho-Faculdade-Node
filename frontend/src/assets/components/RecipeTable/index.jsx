@@ -3,7 +3,7 @@ import UserTableHeader from './RecipeTableHeader.jsx'
 import RecipeTableRow from './RecipeTableRow.jsx'
 import RecipeDetailModal from '../RecipeDetailModal.jsx'
 
-export default function RecipeTable({ recipes, onRowClick, onEdit, onDelete }) {
+export default function RecipeTable({ recipes, onEdit, onDelete }) {
     const [selectedRecipe, setSelectedRecipe] = useState(null);
 
     const closeModal = () => setSelectedRecipe(null);

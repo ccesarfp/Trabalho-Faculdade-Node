@@ -4,19 +4,30 @@ import RecipeTable from "../components/RecipeTable/index.jsx";
 import {useEffect, useState} from "react";
 import RecipeModal from "../components/RecipeModal.jsx";
 import api from "../../api/axios.js";
-import RecipeDetailModal from "../components/RecipeDetailModal.jsx";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function UserRecipes() {
+    const successIcon = "✅";
+    const errorIcon = "❌";
+    const styleToast = {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      };
+
     const { id } = useParams();
     const [recipes, setRecipes] = useState();
     useEffect(() => {
         api.get(`api/user-recipes/${id}`)
             .then(r => {
                 setRecipes(r.data.recipes);
+                toast(r.data.message, {...styleToast, icon: successIcon});
 
             })
             .catch(err => {
-                console.error("Erro ao buscar receitas:", err);
+                toast("Problem during load", {...styleToast, icon: errorIcon});
             });
     }, []);
 
@@ -36,18 +47,20 @@ export default function UserRecipes() {
         if (editingRecipe) {
             api.put("api/recipes", {...data, user_id: id})
                 .then(r => {
+                    toast(r.data.message, {...styleToast, icon: successIcon});
                     navigate(0);
                 })
                 .catch(err => {
-                    console.error("Erro ao editar receita r:", err);
+                    toast("Problem during recipe update", {...styleToast, icon: errorIcon});
                 });
         } else {
             api.post("api/recipes", {...data, user_id: id})
                 .then(r => {
+                    toast(r.data.message, {...styleToast, icon: successIcon});
                     navigate(0);
                 })
                 .catch(err => {
-                    console.error("Erro ao criar receita:", err);
+                    toast("Problem during recipe creation", {...styleToast, icon: errorIcon});
                 });
         }
     };
@@ -55,17 +68,15 @@ export default function UserRecipes() {
     const deleteRecipe = (id) => {
         api.delete(`api/recipes/${id}`)
             .then(r => {
+                toast(r.data.message, {...styleToast, icon: successIcon});
                 navigate(0);
             })
             .catch(err => {
-                console.error("Erro ao deleter receita:", err);
+                toast("Problem during recipe delete", {...styleToast, icon: errorIcon});
             });
     }
 
     const navigate = useNavigate();
-    const onRowClick = (id) => {
-
-    }
 
     return (
         <>
@@ -92,7 +103,6 @@ export default function UserRecipes() {
 
                     <RecipeTable
                         recipes={recipes}
-                        onRowClick={onRowClick}
                         onEdit={handleEdit}
                         onDelete={deleteRecipe}
                     />
@@ -105,6 +115,11 @@ export default function UserRecipes() {
                     />
                 </div>
             </div>
+
+            <Toaster 
+                position="bottom-right"
+                reverseOrder={false}
+            />
         </>
     )
 }
